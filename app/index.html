@@ -13,14 +13,8 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
-    <!-- <link rel="stylesheet" href="styles/main.css"> ///////////////-->
+	<link rel="stylesheet" href="styles/main.css" />
     <!-- endbuild -->
-
-    <style>
-    body{
-      background-color:#EDEDED;
-    }
-    </style>
   </head>
   <body>
 
@@ -30,7 +24,7 @@
       <p>Aquí debería ir el enlace a <a href="formulario.html">tu respositorio en GitHub</a>, donde estará la versión de desarrollo.</p><br/>
     
     <fieldset>
-    <form class="form-horizontal">
+    <form class="form-horizontal" id="formulario">
     <!-- Form Name -->
     <legend>Formulario de validación</legend>
     <!-- Abrimos informacion contacto*******************************************************************************************************************-->
@@ -56,7 +50,7 @@
     <div class="form-group form-group-lg">
       <label class="col-sm-2 control-label" for="Telefono">Teléfono*</label>
       <div class="col-sm-10">
-        <input id="Telefono" name="Telefono" type="tel" placeholder="" class="form-control" required="">
+        <input id="Telefono" name="Telefono" type="text" placeholder="" class="form-control" required="" maxlength="9">
         
       </div>
     </div>
@@ -65,7 +59,7 @@
     <div class="form-group form-group-lg">
       <label class="col-sm-2 control-label" for="Email">Email*</label>
       <div class="col-sm-10">
-        <input id="Email" name="Email" type="email" placeholder="" class="form-control" required="">
+        <input id="Email" name="Email" type="email" placeholder="" class=" form-control" required="">
         
       </div>
     </div>
@@ -111,7 +105,7 @@
     <div class="form-group form-group-lg">
       <label class="col-sm-2 control-label" for="NIF">NIF*</label>
       <div class="col-sm-10">
-        <input id="NIF" name="NIF" type="text" placeholder="" class="form-control" required="">
+        <input id="NIF" name="NIF" type="text" placeholder="" class="form-control" required=""  maxlength="9">
         
       </div>
     </div>
@@ -138,7 +132,7 @@
     <div class="form-group form-group-lg">
       <label class="col-sm-2 control-label" for="CP">CP*</label>
       <div class="col-sm-10">
-        <input id="CP" name="CP" type="number" placeholder="" class="form-control" required="">
+        <input id="CP" name="CP" type="text" placeholder="" class="form-control" required="" maxlength="5">
         
       </div>
     </div>
@@ -174,7 +168,7 @@
     <div class="form-group form-group-lg">
       <label class="col-sm-2 control-label" for="IBAN">Código IBAN*</label>
       <div class="col-sm-10">
-        <input id="IBAN" name="IBAN" type="text" placeholder="" class="form-control" required="">
+        <input id="IBAN" name="IBAN" type="text" placeholder="" class="form-control" required="" maxlength="34">
         
       </div>
     </div>
@@ -250,7 +244,18 @@
     <!-- endbuild -->
 
         <!-- build:js({app,.tmp}) scripts/main.js -->
+        <script src="bower_components/jquery-validate/src/localization/messages_es.js"></script>
+        <script src="bower_components/jquery-validate/src/additional/iban.js"></script>
         <script src="scripts/main.js"></script>
         <!-- endbuild -->
+   <script>
+        $("#formulario").validate({
+                rules: {
+                  	Email: "email.php",
+                    NIF: "NIF.php",
+                    IBAN: "iban"
+                }
+                });
+    </script>
 </body>
 </html>
