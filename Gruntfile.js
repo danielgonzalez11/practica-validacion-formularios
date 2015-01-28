@@ -19,7 +19,7 @@ module.exports = function (grunt) {
   // Configurable paths
   var config = {
     app: 'app',
-    dist: 'dist'
+    dist: '/var/www/proyecto-formulario'
   };
 
   // Define the configuration for all the tasks
@@ -289,7 +289,8 @@ module.exports = function (grunt) {
             '*.{ico,png,txt}',
             'images/{,*/}*.webp',
             '{,*/}*.html',
-            'styles/fonts/{,*/}*.*'
+            'styles/fonts/{,*/}*.*',
+            'php/*.*'
           ]
         }, {
           src: 'node_modules/apache-server-configs/dist/.htaccess',
@@ -318,6 +319,11 @@ module.exports = function (grunt) {
         'imagemin',
         'svgmin'
       ]
+    },
+    shell:{
+      dist:{
+        command: 'rm -rf <%=config.dist %>/*'
+      }
     }
   });
 
@@ -361,7 +367,7 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('build', [
-    'clean:dist',
+    'shell:dist',
     'wiredep',
     'useminPrepare',
     'concurrent:dist',

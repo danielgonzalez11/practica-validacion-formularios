@@ -21,7 +21,7 @@
 <div class="container">
      
       <h1>Práctica validación formularios</h1>
-      <p>Aquí debería ir el enlace a <a href="formulario.html">tu respositorio en GitHub</a>, donde estará la versión de desarrollo.</p><br/>
+      <p>Este es el enlace <a href="https://github.com/danielgonzalez11/practica-validacion-formularios">a mi repositorio en GitHub</a>, donde estará la versión de desarrollo.</p><br/>
     
     <fieldset>
     <form class="form-horizontal" id="formulario">
@@ -193,7 +193,7 @@
     <div class="form-group form-group-lg ">
       <label class="col-sm-2 control-label" for="Usuario">Usuario*</label>
       <div class="col-sm-10">
-        <input id="Usuario" name="Usuario" type="text" placeholder="" class="form-control" required="">
+        <input id="Usuario" name="Usuario" type="text" placeholder="" class="form-control" required="" readonly>
         
       </div>
     </div>
@@ -251,11 +251,17 @@
    <script>
         $("#formulario").validate({
                 rules: {
-                  	Email: "email.php",
-                    NIF: "NIF.php",
-                    IBAN: "iban"
+                  	Email: {
+                  			remote:"php/email.php"
+                  	},
+                    NIF: {
+                    		remote: "php/NIF.php"
+                    },	
+                    IBAN: {
+                    		remote:	"iban"
+                    }
                 }
-                });
+             });
     </script>
 </body>
 </html>
