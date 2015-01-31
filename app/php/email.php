@@ -22,7 +22,7 @@ $conexion = new mysqli($host,$usuarioBD,$pass,$bd);
 	$valid = 'true';
 	if($consulta->fetch())
 	{
-	 	$valid= '"Este correo ya está en uso"';
+	 	$valid= 'Correo en uso';
 	}    
 
 echo $valid;

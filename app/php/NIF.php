@@ -22,7 +22,7 @@ $conexion = new mysqli($host,$usuarioBD,$pass,$bd);
 	$valid = 'true';
 	if($consulta->fetch())
 	{
-	 	$valid= '"Este NIF ya está en uso"';
+	 	$valid= 'NIF ya en uso';
 	}    
 
 echo $valid;

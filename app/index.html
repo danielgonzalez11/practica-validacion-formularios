@@ -203,7 +203,7 @@
       <label class="col-sm-2 control-label" for="password">Contraseña*</label>
       <div class="col-sm-10">
         <input id="password" name="password" type="password" placeholder="" class="form-control" required="">
-        
+        <div id="progressbar"></div>
       </div>
     </div>
 
@@ -240,28 +240,45 @@
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/jquery-validate/dist/jquery.validate.js"></script>
+    <script src="bower_components/jquery.complexify.js/jquery.complexify.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({app,.tmp}) scripts/main.js -->
         <script src="bower_components/jquery-validate/src/localization/messages_es.js"></script>
         <script src="bower_components/jquery-validate/src/additional/iban.js"></script>
+        <script src="/bower_components/jquery.complexify.js"></script>
         <script src="scripts/main.js"></script>
         <!-- endbuild -->
    <script>
+
+   		 
         $("#formulario").validate({
                 rules: {
                   	Email: {
-                  			remote:"php/email.php"
+                  			remote:"php/email.php"	
                   	},
                     NIF: {
                     		remote: "php/NIF.php"
                     },	
                     IBAN: {
                     		remote:	"iban"
+                    },
+                    Telefono: {
+                    	 minlength: 9,
+                    	 maxlength: 9,
+                    	//comprobar que son numeros
+                    	
+                    },
+                    CP{
+                    	maxlength:5,
+                    	//comrpobar numeros
                     }
                 }
              });
+
     </script>
 </body>
+
 </html>
+                
