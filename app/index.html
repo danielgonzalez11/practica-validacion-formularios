@@ -103,16 +103,16 @@
 
     <!-- Text input-->
     <div class="form-group form-group-lg">
-      <label class="col-sm-2 control-label" for="NIF">NIF*</label>
+      <label id="labelNIF" class="col-sm-2 control-label" for="NIF">NIF*</label>
       <div class="col-sm-10">
-        <input id="NIF" name="NIF" type="text" placeholder="" class="form-control" required="">
+        <input id="NIF" name="NIF" type="text" placeholder="" class="form-control" required="" maxlength="9">
         
       </div>
     </div>
 
     <!-- Text input-->
     <div class="form-group form-group-lg">
-      <label class="col-sm-2 control-label" for="facNombre">Nombre*</label>
+      <label id="labelFacNombre" class="col-sm-2 control-label" for="facNombre">Nombre*</label>
       <div class="col-sm-10">
         <input id="facNombre" name="facNombre" type="text" placeholder="" class="form-control" required="">
         
@@ -246,7 +246,7 @@
 
         <!-- build:js({app,.tmp}) scripts/main.js -->
         <script src="bower_components/jquery-validate/src/localization/messages_es.js"></script>
-        <script src="bower_components/jquery-validate/src/additional/iban.js"></script>
+        <script src="scripts/additional-methods.js"></script>
         <script src="scripts/main.js"></script>
         <!-- endbuild -->
 		

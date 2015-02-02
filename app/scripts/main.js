@@ -14,6 +14,7 @@ $(document).ready(function() {
                         },
                         Email: {
                                 required: true,
+                                minlength:4,
                                 remote:'php/email.php' 
                         },
                         repetirEmail: {
@@ -64,7 +65,7 @@ $(document).ready(function() {
                         },
                         IBAN: {
                                 required: true,
-                                remote: 'iban'
+                                iban: true
                         },
                         Pago:{
                                 required:true
@@ -89,11 +90,23 @@ $(document).ready(function() {
         }
     });
 
-    $('#Demandante').focusin(function() {
+    $('#Demandante').change(function() {
         if($('#Demandante').val()==='Empresa')
         {
-            $('#labelFacNombre').val('Empresa*');
+            $('#labelFacNombre').text('Empresa*');
+            $('#labelNIF').text('CIF*');
         }
+        else
+        {
+            $('#labelFacNombre').text('Nombre*');
+            $('#labelNIF').text('NIF*');
+        }    
+    });
+
+    $('#Email').focusout(function() {
+        var emilio= $('#Email').val();
+        $('#Usuario').prop('placeholder',emilio);
+
     });
 
 });
