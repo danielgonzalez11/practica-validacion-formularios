@@ -30,6 +30,16 @@ $(document).ready(function() {
                         NIF: {  
                                 required: true,
                                 minlength:9,
+                                nifES: function(){
+                                    if($('#Demandante').val()==='Particular'){
+                                        return true;
+                                    }
+                                },
+                                cifES:function(){
+                                     if($('#Demandante').val()==='Empresa'){
+                                        return true;
+                                    }
+                                },
                                 remote: 'php/NIF.php'
                         },  
                         facNombre:{
@@ -51,7 +61,6 @@ $(document).ready(function() {
                                             
                                         }
                                     });
-                                   
                                 }
                         },
                         localidad:{
@@ -94,19 +103,37 @@ $(document).ready(function() {
         if($('#Demandante').val()==='Empresa')
         {
             $('#labelFacNombre').text('Empresa*');
+            $('#facNombre').val('');
             $('#labelNIF').text('CIF*');
+            $('#NIF').val('');
         }
         else
         {
             $('#labelFacNombre').text('Nombre*');
+            $('#facNombre').val('');
             $('#labelNIF').text('NIF*');
+            $('#NIF').val('');
         }    
     });
-
+    //Al ser readonly, el input y css esta deshabilitado, solo puedo darle placeholder
     $('#Email').focusout(function() {
         var emilio= $('#Email').val();
         $('#Usuario').prop('placeholder',emilio);
 
+    });
+
+    $('#CP').focusout(function() {
+        //Comprobar CP
+        $.get('php/CP.php', {cp: $('#CP').val(), PoM: 'Provincia'},
+            function (provincia) {
+                $('#Provincia').val(provincia);
+            }
+        );
+       $('#localidad').load('php/CP.php',{cp: $('#CP').val(), PoM: 'Localidad'},
+            function (localidad){
+                //$('#localidad').val(localidad);
+            }
+        ); 
     });
 
 });
