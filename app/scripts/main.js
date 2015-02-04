@@ -52,15 +52,27 @@ $(document).ready(function() {
                                 required:true,
                                 digits:true,
                                 minlength: 5,
-                                rule: function(){
-                                    $('#CP').focusout(function() {
-                                        var cp = $('#CP').val();
-                                        if (cp.length<5)
-                                        {
-                                            $('#CP').val('0'+cp);
-                                            
-                                        }
-                                    });
+                                rule: function () {
+                                    var size =$('#CP').val();
+                                    if(size.length<5){
+                                        $('#CP').val('0'+size);
+                                        $('#CP').focus();    
+                                    }
+                                    else{
+                                        $.get('php/CP.php', {cp: $('#CP').val(), PoM: 'Provincia'},
+                                            function (provincia) {
+                                            $('#Provincia').val(provincia);
+                                        });
+                                       $('#localidad').load('php/CP.php',{cp: $('#CP').val(), PoM: 'Localidad'},
+                                        function (localidad){
+                                            var municipios = jQuery.parseJSON(localidad);
+                                            var options='';
+                                            for(var i = 0; i < municipios.length; i++){
+                                               options+='<option value="'+municipios[i]+'">'+municipios[i]+'</option>';
+                                            }
+                                            $("#localidad").html(options);
+                                        });    
+                                    }
                                 }
                         },
                         localidad:{
@@ -122,19 +134,30 @@ $(document).ready(function() {
 
     });
 
-    $('#CP').focusout(function() {
+ /*   $('#CP').focusout(function() {
         //Comprobar CP
-        $.get('php/CP.php', {cp: $('#CP').val(), PoM: 'Provincia'},
-            function (provincia) {
-                $('#Provincia').val(provincia);
+        var postal = $('#CP').val();
+       
+            if(postal.length===5)
+            {
+                 $.get('php/CP.php', {cp: $('#CP').val(), PoM: 'Provincia'},
+                function (provincia) {
+                    $('#Provincia').val(provincia);
+                });
+               $('#localidad').load('php/CP.php',{cp: $('#CP').val(), PoM: 'Localidad'},
+                    function (localidad){
+                    var municipios = jQuery.parseJSON(localidad);
+                    var options='';
+                    for(var i = 0; i < municipios.length; i++){
+                        options+='<option value="'+municipios[i]+'">'+municipios[i]+'</option>';
+                    }
+                    $("#localidad").html(options);
+                });    
             }
-        );
-       $('#localidad').load('php/CP.php',{cp: $('#CP').val(), PoM: 'Localidad'},
-            function (localidad){
-                //$('#localidad').val(localidad);
+            else{
+                $('#CP').val('0'+postal);
             }
-        ); 
-    });
+    });*/
 
 });
 

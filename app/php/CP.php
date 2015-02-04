@@ -1,6 +1,6 @@
 <?php
-$CP = trim($_GET['cp']);
-$PoM = trim($_GET['PoM']);
+$CP = trim($_REQUEST['cp']);
+$PoM = trim($_REQUEST['PoM']);
 //sleep(2);
 //usleep(150000);
 $usuarioBD ="root";
@@ -9,6 +9,7 @@ $host = "localhost";
 $bd = "provincias";
        
 $conexion = new mysqli($host,$usuarioBD,$pass,$bd);
+$conexion->set_charset("utf8");
 //Hacemos una consulta a ver si el usuario existe
 	if ($conexion->connect_errno){
 		echo ("Se ha producido un error conectado a la base de datos ".$conexion->connect_error);
@@ -26,6 +27,7 @@ $conexion = new mysqli($host,$usuarioBD,$pass,$bd);
 			if($consulta->fetch())
 			{
 			 	$valid= $p;
+			 	echo $valid;
 			}    
 
 		}
@@ -41,9 +43,8 @@ $conexion = new mysqli($host,$usuarioBD,$pass,$bd);
 			while($consulta->fetch())
 			{
 			 	$valid[$i]= $m;
-			}   $i++; 
+			 	$i++;
+			}    
+			echo json_encode($valid);
 	}
-
-
-echo $valid;
 ?>
