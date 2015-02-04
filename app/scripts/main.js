@@ -95,7 +95,12 @@ $(document).ready(function() {
                                 required:true
                         },
                         password:{
-                                required:true
+                                required:true,
+                                complexify: true
+                        },
+                        passRepetir:{
+                                required:true,
+                                equalTo:password
                         }
                     }
     });
@@ -133,6 +138,12 @@ $(document).ready(function() {
         $('#Usuario').prop('placeholder',emilio);
 
     });
+
+    $('#password').focusin(function() {
+            $('#password').complexify({}, function(valid, complexity){
+                    $('#progressBar').val(complexity);
+             });
+    });   
 
  /*   $('#CP').focusout(function() {
         //Comprobar CP

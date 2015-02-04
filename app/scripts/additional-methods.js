@@ -213,3 +213,14 @@ $.validator.addMethod( "nifES", function( value ) {
 
 }, "Introduce un NIF correcto." );
 
+//*************************************************************
+//CONTRASEÑA BUENA
+$.validator.addMethod("complexify", function(value,element) {
+
+  var compleja=$("#progressBar").val();
+
+  if(compleja<40){
+    return false;
+  }
+  return true;
+}, "Complejidad de la contraseña demasiado baja");
