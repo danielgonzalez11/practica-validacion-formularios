@@ -55,8 +55,15 @@ $(document).ready(function() {
                                 rule: function () {
                                     var size =$('#CP').val();
                                     if(size.length<5){
-                                        $('#CP').val('0'+size);
-                                        $('#CP').focus();    
+                                        $('#CP').focusin(function(){
+                                            var ceros = 5 - size.length;
+                                            var add ='';
+                                            for(var i = 0; i<ceros;i++){
+                                                add +='0';
+                                            }
+                                            $('#CP').val(add+size);
+                                        })
+                                        .focus(); 
                                     }
                                     else{
                                         $.get('php/CP.php', {cp: $('#CP').val(), PoM: 'Provincia'},
@@ -100,12 +107,20 @@ $(document).ready(function() {
                         },
                         passRepetir:{
                                 required:true,
-                                equalTo:password
+                                equalTo: '#password'
                         }
+                    },
+                    submitHandler: function() {
+                        alert('Dado de alta correctamente, próxima cuota 200 €', 'Alert Dialog');
+                        window.location.href='https://github.com/danielgonzalez11';
                     }
     });
 
-    
+    $('#boton2').click(function(){
+        alert('Cancelamos el registro');
+        window.location.href='https://github.com/danielgonzalez11';
+
+    });
 
     $('#facNombre').focusin(function() {
         var nombre = $('#Nombre').val();
