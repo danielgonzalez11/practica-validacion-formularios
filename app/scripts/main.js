@@ -111,8 +111,23 @@ $(document).ready(function() {
                         }
                     },
                     submitHandler: function() {
-                        alert('Dado de alta correctamente, próxima cuota 200 €', 'Alert Dialog');
-                        window.location.href='https://github.com/danielgonzalez11';
+                        var pago = $('#Pago').val();
+                        if(pago==='Mensual'){
+                            pago='50€';
+                            alert('Dado de alta correctamente, próxima cuota '+pago, 'Alert Dialog');
+                            window.location.href='https://github.com/danielgonzalez11';
+                        }
+                        else if(pago==='Trimestral'){
+                            pago='140€';
+                            alert('Dado de alta correctamente, próxima cuota '+pago, 'Alert Dialog');
+                            window.location.href='https://github.com/danielgonzalez11';
+                        }
+                        else{
+                            pago='550€';
+                            alert('Dado de alta correctamente, próxima cuota '+pago, 'Alert Dialog');
+                            window.location.href='https://github.com/danielgonzalez11';
+                        }
+                        
                     }
     });
 
