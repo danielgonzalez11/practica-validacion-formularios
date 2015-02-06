@@ -1,5 +1,6 @@
 $(document).ready(function() {
     $('#formulario').validate({
+                    onkeyup: false,
                     rules: {
                         Nombre:{
                                 required:true
@@ -110,6 +111,14 @@ $(document).ready(function() {
                                 equalTo: '#password'
                         }
                     },
+                    messages: {
+                                Email: {
+                                        remote: "Este correo ya esta en uso."
+                                },
+                                NIF: {
+                                        remote: "NIF o CIF ya en uso"
+                                }
+                    },
                     submitHandler: function() {
                         var pago = $('#Pago').val();
                         if(pago==='Mensual'){
@@ -162,12 +171,12 @@ $(document).ready(function() {
             $('#NIF').val('');
         }    
     });
-    //Al ser readonly, el input y css esta deshabilitado, solo puedo darle placeholder
+    //Al ser readonly, el input esta deshabilitado, solo puedo darle placeholder
     $('#Email').focusout(function() {
         var emilio= $('#Email').val();
         $('#Usuario').prop('placeholder',emilio);
 
-    });
+    }); 
 
     $('#password').focusin(function() {
             $('#password').complexify({}, function(valid, complexity){

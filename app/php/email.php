@@ -8,6 +8,7 @@ $host = "localhost";
 $bd = "usuario";
        
 $conexion = new mysqli($host,$usuarioBD,$pass,$bd);
+$conexion->set_charset("utf8");
 //Hacemos una consulta a ver si el usuario existe
 	if ($conexion->connect_errno){
 		echo ("Se ha producido un error conectado a la base de datos ".$conexion->connect_error);
@@ -22,8 +23,9 @@ $conexion = new mysqli($host,$usuarioBD,$pass,$bd);
 	$valid = 'true';
 	if($consulta->fetch())
 	{
-	 	$valid= 'Correo en uso';
+	 	$valid= 'false';
 	}    
+
 
 echo $valid;
 ?>
