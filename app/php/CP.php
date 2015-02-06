@@ -1,12 +1,20 @@
 <?php
+header('Access-Control-Allow-Origin: *');
 $CP = trim($_REQUEST['cp']);
 $PoM = trim($_REQUEST['PoM']);
 //sleep(2);
 //usleep(150000);
+
+/*
 $usuarioBD ="root";
 $pass ="root";
 $host = "localhost";
-$bd = "provincias";
+$bd = "provincias";*/
+
+$usuarioBD ="danielgonzalez_d";
+$pass ="danielgonzalez11";
+$host = "localhost";
+$bd = "danielgonzalez_provincias";
        
 $conexion = new mysqli($host,$usuarioBD,$pass,$bd);
 $conexion->set_charset("utf8");

@@ -1,11 +1,18 @@
 <?php
+header('Access-Control-Allow-Origin: *');
 $NIF = trim($_REQUEST['NIF']);
 //sleep(2);
 //usleep(150000);
+/*
 $usuarioBD ="root";
 $pass ="root";
 $host = "localhost";
-$bd = "usuario";
+$bd = "usuario";*/
+
+$usuarioBD ="danielgonzalez_d";
+$pass ="danielgonzalez11";
+$host = "localhost";
+$bd = "danielgonzalez_usuario";
        
 $conexion = new mysqli($host,$usuarioBD,$pass,$bd);
 $conexion->set_charset("utf8");
