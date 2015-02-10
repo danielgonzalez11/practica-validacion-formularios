@@ -123,17 +123,17 @@ $(document).ready(function() {
                         var pago = $('#Pago').val();
                         if(pago==='Mensual'){
                             pago='50€';
-                            alert('Dado de alta correctamente, próxima cuota mensual '+pago, 'Alert Dialog');
+                            confirm('Dado de alta correctamente, próxima cuota mensual '+pago, 'Alert Dialog');
                             window.location.href='https://github.com/danielgonzalez11';
                         }
                         else if(pago==='Trimestral'){
                             pago='140€';
-                            alert('Dado de alta correctamente, próxima cuota trimestral '+pago, 'Alert Dialog');
+                            confirm('Dado de alta correctamente, próxima cuota trimestral '+pago, 'Alert Dialog');
                             window.location.href='https://github.com/danielgonzalez11';
                         }
                         else{
                             pago='550€';
-                            alert('Dado de alta correctamente, próxima cuota anual '+pago, 'Alert Dialog');
+                            confirm('Dado de alta correctamente, próxima cuota anual '+pago, 'Alert Dialog');
                             window.location.href='https://github.com/danielgonzalez11';
                         }
                         
